@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.pk.frontend.MainScreenController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: rgb(56, 55, 42);" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pk.frontend.MainScreenController">
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="checkButton" mnemonicParsing="false" onAction="#calculate" style="-fx-background-color: #19fc00;" text="Sprawdź">
+               <font>
+                  <Font name="Consolas Bold" size="20.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets top="50.0" />
+               </StackPane.margin></Button>
+            <TextField fx:id="infoInput" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="600.0" promptText="Wpisz bity informacji">
+               <StackPane.margin>
+                  <Insets bottom="80.0" />
+               </StackPane.margin>
+               <font>
+                  <Font name="Consolas Bold" size="18.0" />
+               </font></TextField>
+            <Label fx:id="errorLabel" text="Błędne dane!" textAlignment="CENTER" textFill="#ff0707">
+               <font>
+                  <Font name="Consolas Bold" size="24.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets bottom="200.0" />
+               </StackPane.margin>
+            </Label>
+         </children>
+      </StackPane>
+   </center>
+   <bottom>
+      <Label text="Designed with passion by&#10;M. Ciura &amp; J. Chmielewski" textAlignment="CENTER" textFill="#19fc00" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Consolas" size="14.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="15.0" />
+         </padding>
+      </Label>
+   </bottom>
+</BorderPane>
