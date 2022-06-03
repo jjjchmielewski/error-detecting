@@ -14,7 +14,7 @@
                   <Font name="Consolas Bold" size="20.0" />
                </font>
                <StackPane.margin>
-                  <Insets top="50.0" />
+                  <Insets top="100.0" />
                </StackPane.margin></Button>
             <TextField fx:id="infoInput" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="600.0" promptText="Wpisz bity informacji">
                <StackPane.margin>
@@ -31,6 +31,14 @@
                   <Insets bottom="200.0" />
                </StackPane.margin>
             </Label>
+            <TextField fx:id="infoWordLengthInput" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="Liczba bitów słowa informacyjnego">
+               <font>
+                  <Font name="Consolas Bold" size="11.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets top="10.0" />
+               </StackPane.margin>
+            </TextField>
          </children>
       </StackPane>
    </center>
@@ -47,4 +55,34 @@
          </padding>
       </Label>
    </bottom>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <RadioButton fx:id="bergerRadio" mnemonicParsing="false" onAction="#showBerger" text="Kod Bergera" textFill="#19fc00">
+               <font>
+                  <Font name="Consolas Bold" size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="crcRadio" mnemonicParsing="false" onAction="#showCRC" text="Kody CRC" textFill="#19fc00">
+               <font>
+                  <Font name="Consolas Bold" size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="hammingRadio" mnemonicParsing="false" onAction="#showHamming" text="Algorytm Hamminga" textFill="#19fc00">
+               <font>
+                  <Font name="Consolas Bold" size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+            </RadioButton>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
