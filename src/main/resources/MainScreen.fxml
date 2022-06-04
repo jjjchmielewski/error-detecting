@@ -9,9 +9,9 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="checkButton" mnemonicParsing="false" onAction="#calculate" style="-fx-background-color: #19fc00;" text="Sprawdź">
+            <Button fx:id="chooseFileButton" mnemonicParsing="false" onAction="#chooseFile" style="-fx-background-color: white;" text="Wybierz plik">
                <font>
-                  <Font name="Consolas Bold" size="20.0" />
+                  <Font name="Consolas" size="18.0" />
                </font>
                <StackPane.margin>
                   <Insets top="100.0" />
@@ -42,6 +42,22 @@
             <Label fx:id="successLabel" text="Sukces!" textFill="#19fc00">
                <font>
                   <Font name="Consolas Bold" size="30.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets bottom="200.0" />
+               </StackPane.margin>
+            </Label>
+            <Button fx:id="checkButton" layoutX="358.0" layoutY="366.0" mnemonicParsing="false" onAction="#calculate" style="-fx-background-color: #19fc00;" text="Sprawdź">
+               <font>
+                  <Font name="Consolas Bold" size="20.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets top="500.0" />
+               </StackPane.margin>
+            </Button>
+            <Label fx:id="raportCreatedLabel" text="Raport utworzony" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Consolas Bold" size="24.0" />
                </font>
                <StackPane.margin>
                   <Insets bottom="200.0" />

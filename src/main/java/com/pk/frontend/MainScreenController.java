@@ -2,12 +2,19 @@ package com.pk.frontend;
 
 import com.pk.backend.Berger;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class MainScreenController {
 
@@ -27,6 +34,13 @@ public class MainScreenController {
   private RadioButton hammingRadio;
   @FXML
   private Label successLabel;
+  @FXML
+  private Button chooseFileButton;
+  @FXML
+  private Label raportCreatedLabel;
+
+  FileChooser fileChooser = new FileChooser();
+  File file;
 
   private Mode mode;
 
@@ -37,12 +51,50 @@ public class MainScreenController {
     checkButton.setVisible(false);
     infoWordLengthInput.setVisible(false);
     successLabel.setVisible(false);
+    chooseFileButton.setVisible(false);
+    raportCreatedLabel.setVisible(false);
   }
 
-  public void calculate() {
-    if (!infoInput.getText().isEmpty()) {
-      errorLabel.setVisible(false);
-      successLabel.setVisible(false);
+  public void chooseFile() {
+    fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+    file = fileChooser.showOpenDialog(successLabel.getScene().getWindow());
+    while(!file.exists()){
+
+    }
+    chooseFileButton.setText(file.getName());
+  }
+
+  public void calculate() throws FileNotFoundException {
+    errorLabel.setVisible(false);
+    successLabel.setVisible(false);
+    raportCreatedLabel.setVisible(false);
+    if(file.exists()) {
+      PrintWriter printWriter = new PrintWriter("Raport-" + mode.name() + "-" + System.currentTimeMillis() + ".txt");
+      Scanner scanner = new Scanner(file);
+      String line;
+      while(scanner.hasNextLine()) {
+        line = scanner.nextLine();
+        switch (mode) {
+          case CRC -> {
+          }
+          case Berger -> {
+            if (Berger.check(line)) {
+              printWriter.println(line + " - SUCCESS");
+            } else {
+              printWriter.println(line + " - ERROR");
+            }
+          }
+          case Hamming -> {
+          }
+
+        }
+      }
+      raportCreatedLabel.setVisible(true);
+      printWriter.close();
+      scanner.close();
+      chooseFileButton.setText("Wybierz plik");
+      file = null;
+    } else if (!infoInput.getText().isEmpty()) {
       switch (mode) {
         case CRC -> {
         }
@@ -68,6 +120,7 @@ public class MainScreenController {
     hammingRadio.setSelected(false);
     infoInput.setVisible(true);
     checkButton.setVisible(true);
+    chooseFileButton.setVisible(true);
   }
 
   public void showCRC() {
