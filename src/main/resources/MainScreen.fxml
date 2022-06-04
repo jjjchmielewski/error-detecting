@@ -16,14 +16,7 @@
                <StackPane.margin>
                   <Insets top="100.0" />
                </StackPane.margin></Button>
-            <TextField fx:id="infoInput" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="600.0" promptText="Wpisz bity informacji">
-               <StackPane.margin>
-                  <Insets bottom="80.0" />
-               </StackPane.margin>
-               <font>
-                  <Font name="Consolas Bold" size="18.0" />
-               </font></TextField>
-            <Label fx:id="errorLabel" text="Błędne dane!" textAlignment="CENTER" textFill="#ff0707">
+            <Label fx:id="errorLabel" text="Wykryto błąd!" textAlignment="CENTER" textFill="#ff0707">
                <font>
                   <Font name="Consolas Bold" size="24.0" />
                </font>
@@ -31,6 +24,13 @@
                   <Insets bottom="200.0" />
                </StackPane.margin>
             </Label>
+            <TextField fx:id="infoInput" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="600.0" promptText="Wpisz bity informacji">
+               <StackPane.margin>
+                  <Insets bottom="80.0" />
+               </StackPane.margin>
+               <font>
+                  <Font name="Consolas Bold" size="18.0" />
+               </font></TextField>
             <TextField fx:id="infoWordLengthInput" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="Liczba bitów słowa informacyjnego">
                <font>
                   <Font name="Consolas Bold" size="11.0" />
@@ -39,6 +39,14 @@
                   <Insets top="10.0" />
                </StackPane.margin>
             </TextField>
+            <Label fx:id="successLabel" text="Sukces!" textFill="#19fc00">
+               <font>
+                  <Font name="Consolas Bold" size="30.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets bottom="200.0" />
+               </StackPane.margin>
+            </Label>
          </children>
       </StackPane>
    </center>

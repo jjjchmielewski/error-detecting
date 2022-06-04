@@ -25,35 +25,39 @@ public class MainScreenController {
   private RadioButton crcRadio;
   @FXML
   private RadioButton hammingRadio;
+  @FXML
+  private Label successLabel;
 
   private Mode mode;
 
   @FXML
-  public void initialize(){
+  public void initialize() {
     infoInput.setVisible(false);
     errorLabel.setVisible(false);
     checkButton.setVisible(false);
     infoWordLengthInput.setVisible(false);
+    successLabel.setVisible(false);
   }
 
   public void calculate() {
     if (!infoInput.getText().isEmpty()) {
       errorLabel.setVisible(false);
+      successLabel.setVisible(false);
       switch (mode) {
         case CRC -> {
-          break;
         }
         case Berger -> {
-          Berger.check(infoInput.getText());
-          break;
+          if (Berger.check(infoInput.getText())) {
+            successLabel.setVisible(true);
+          } else {
+            errorLabel.setVisible(true);
+          }
         }
         case Hamming -> {
-          break;
         }
 
       }
-    }
-    else {
+    } else {
       errorLabel.setVisible(true);
     }
   }
@@ -64,7 +68,6 @@ public class MainScreenController {
     hammingRadio.setSelected(false);
     infoInput.setVisible(true);
     checkButton.setVisible(true);
-    infoWordLengthInput.setVisible(true);
   }
 
   public void showCRC() {
