@@ -88,10 +88,11 @@ public class MainScreenController {
             }
           }
           case Hamming -> {
-            if (Hamming.check(line)) {
+            int result = Hamming.check(line);
+            if (result == -1) {
               printWriter.println(line + " - SUCCESS");
             } else {
-              printWriter.println(line + " - ERROR");
+              printWriter.println(line + " - ERROR IN BIT " + result);
             }
           }
 
@@ -101,6 +102,7 @@ public class MainScreenController {
       printWriter.close();
       scanner.close();
       chooseFileButton.setText("Wybierz plik");
+      errorLabel.setText("Wykryto błąd!");
       file = null;
     } else if (!infoInput.getText().isEmpty()) {
       switch (mode) {
@@ -114,10 +116,12 @@ public class MainScreenController {
           }
         }
         case Hamming -> {
-          if (Hamming.check(infoInput.getText())) {
+          int result = Hamming.check(infoInput.getText());
+          if (result == -1) {
             successLabel.setVisible(true);
           } else {
             errorLabel.setVisible(true);
+            errorLabel.setText("Błąd w bicie nr " + result);
           }
         }
 
@@ -134,12 +138,16 @@ public class MainScreenController {
     infoInput.setVisible(true);
     checkButton.setVisible(true);
     chooseFileButton.setVisible(true);
+    errorLabel.setVisible(false);
+    successLabel.setVisible(false);
   }
 
   public void showCRC() {
     mode = Mode.CRC;
     bergerRadio.setSelected(false);
     hammingRadio.setSelected(false);
+    errorLabel.setVisible(false);
+    successLabel.setVisible(false);
   }
 
   public void showHamming() {
@@ -149,5 +157,7 @@ public class MainScreenController {
     infoInput.setVisible(true);
     checkButton.setVisible(true);
     chooseFileButton.setVisible(true);
+    errorLabel.setVisible(false);
+    successLabel.setVisible(false);
   }
 }
