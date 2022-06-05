@@ -31,6 +31,7 @@ public class Berger {
       log.error("Berger code check failed - some 0s have changed to 1s");
       return false;
     } else {
+      log.info("Berger code check succeeded for String: {}", binaryString);
       return true;
     }
 

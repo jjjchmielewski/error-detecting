@@ -1,6 +1,7 @@
 package com.pk.frontend;
 
 import com.pk.backend.Berger;
+import com.pk.backend.Hamming;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -13,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -57,6 +59,7 @@ public class MainScreenController {
 
   public void chooseFile() {
     fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+    fileChooser.setInitialDirectory(new File(Paths.get(".").toAbsolutePath().normalize().toString()));
     file = fileChooser.showOpenDialog(successLabel.getScene().getWindow());
     while(!file.exists()){
 
@@ -68,7 +71,7 @@ public class MainScreenController {
     errorLabel.setVisible(false);
     successLabel.setVisible(false);
     raportCreatedLabel.setVisible(false);
-    if(file.exists()) {
+    if(file != null && file.exists()) {
       PrintWriter printWriter = new PrintWriter("Raport-" + mode.name() + "-" + System.currentTimeMillis() + ".txt");
       Scanner scanner = new Scanner(file);
       String line;
@@ -85,6 +88,11 @@ public class MainScreenController {
             }
           }
           case Hamming -> {
+            if (Hamming.check(line)) {
+              printWriter.println(line + " - SUCCESS");
+            } else {
+              printWriter.println(line + " - ERROR");
+            }
           }
 
         }
@@ -106,6 +114,11 @@ public class MainScreenController {
           }
         }
         case Hamming -> {
+          if (Hamming.check(infoInput.getText())) {
+            successLabel.setVisible(true);
+          } else {
+            errorLabel.setVisible(true);
+          }
         }
 
       }
@@ -133,5 +146,8 @@ public class MainScreenController {
     mode = Mode.Hamming;
     bergerRadio.setSelected(false);
     crcRadio.setSelected(false);
+    infoInput.setVisible(true);
+    checkButton.setVisible(true);
+    chooseFileButton.setVisible(true);
   }
 }
