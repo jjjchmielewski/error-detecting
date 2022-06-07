@@ -24,16 +24,16 @@
                   <Insets bottom="200.0" />
                </StackPane.margin>
             </Label>
-            <TextField fx:id="infoInput" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="600.0" promptText="Wpisz bity informacji">
+            <TextField fx:id="infoInput" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="600.0" promptText="Wpisz ciąg binarny">
                <StackPane.margin>
                   <Insets bottom="80.0" />
                </StackPane.margin>
                <font>
                   <Font name="Consolas Bold" size="18.0" />
                </font></TextField>
-            <TextField fx:id="infoWordLengthInput" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="Liczba bitów słowa informacyjnego">
+            <TextField fx:id="polynomialInput" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="250.0" promptText="Klucz">
                <font>
-                  <Font name="Consolas Bold" size="11.0" />
+                  <Font name="Consolas Bold" size="18.0" />
                </font>
                <StackPane.margin>
                   <Insets top="10.0" />

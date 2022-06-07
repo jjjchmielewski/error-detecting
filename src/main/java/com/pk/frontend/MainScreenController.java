@@ -1,21 +1,19 @@
 package com.pk.frontend;
 
 import com.pk.backend.Berger;
+import com.pk.backend.CRC;
 import com.pk.backend.Hamming;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class MainScreenController {
@@ -27,7 +25,7 @@ public class MainScreenController {
   @FXML
   private Label errorLabel;
   @FXML
-  private TextField infoWordLengthInput;
+  private TextField polynomialInput;
   @FXML
   private RadioButton bergerRadio;
   @FXML
@@ -51,7 +49,7 @@ public class MainScreenController {
     infoInput.setVisible(false);
     errorLabel.setVisible(false);
     checkButton.setVisible(false);
-    infoWordLengthInput.setVisible(false);
+    polynomialInput.setVisible(false);
     successLabel.setVisible(false);
     chooseFileButton.setVisible(false);
     raportCreatedLabel.setVisible(false);
@@ -79,6 +77,11 @@ public class MainScreenController {
         line = scanner.nextLine();
         switch (mode) {
           case CRC -> {
+            if (CRC.check(line.substring(0,line.indexOf(' ')), line.substring(line.indexOf(' ') + 1))) {
+              printWriter.println(line + " - SUCCESS");
+            } else {
+              printWriter.println(line + " - ERROR");
+            }
           }
           case Berger -> {
             if (Berger.check(line)) {
@@ -107,6 +110,11 @@ public class MainScreenController {
     } else if (!infoInput.getText().isEmpty()) {
       switch (mode) {
         case CRC -> {
+          if (CRC.check(infoInput.getText(), polynomialInput.getText())) {
+            successLabel.setVisible(true);
+          } else {
+            errorLabel.setVisible(true);
+          }
         }
         case Berger -> {
           if (Berger.check(infoInput.getText())) {
@@ -140,6 +148,7 @@ public class MainScreenController {
     chooseFileButton.setVisible(true);
     errorLabel.setVisible(false);
     successLabel.setVisible(false);
+    polynomialInput.setVisible(false);
   }
 
   public void showCRC() {
@@ -148,6 +157,10 @@ public class MainScreenController {
     hammingRadio.setSelected(false);
     errorLabel.setVisible(false);
     successLabel.setVisible(false);
+    infoInput.setVisible(true);
+    checkButton.setVisible(true);
+    chooseFileButton.setVisible(true);
+    polynomialInput.setVisible(true);
   }
 
   public void showHamming() {
@@ -159,5 +172,6 @@ public class MainScreenController {
     chooseFileButton.setVisible(true);
     errorLabel.setVisible(false);
     successLabel.setVisible(false);
+    polynomialInput.setVisible(false);
   }
 }
